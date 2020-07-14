@@ -9,7 +9,15 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 
+
     </style>
+
+    <style name="Theme.AppCompat.DayNight.DarkActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
+
+        <item name="android:actionMenuTextColor">@color/red</item>
+
+    </style>
+
 
     <style name="whiteText">
 

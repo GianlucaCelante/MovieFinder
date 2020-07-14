@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
 import android.text.Html;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -176,8 +178,8 @@ public class MainActivity extends AppCompatActivity implements IWebServer {
         getMenuInflater().inflate(R.menu.main_menu, menu);
 
         final MenuItem search = menu.findItem(R.id.action_search);
-        searchView = (SearchView) search.getActionView();
 
+        searchView = (SearchView) search.getActionView();
 
         ImageView closeButton = searchView.findViewById(R.id.search_close_btn);
 

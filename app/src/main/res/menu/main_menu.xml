@@ -15,6 +15,7 @@
         android:icon="@drawable/ic_search_black_24dp"
         app:showAsAction="always"
         android:title="Ricerca"
+        android:iconTint="@color/red"
         app:actionViewClass="androidx.appcompat.widget.SearchView">
     </item>
 
