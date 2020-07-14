@@ -6,7 +6,16 @@
         android:id="@+id/action_add"
         android:icon="@drawable/ic_bookmark_black_24dp"
         app:showAsAction="always"
-        android:title="Preferiti">
+        android:title="Preferiti"
+        android:orderInCategory="1">
+    </item>
+
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_search_black_24dp"
+        app:showAsAction="always"
+        android:title="Ricerca"
+        app:actionViewClass="androidx.appcompat.widget.SearchView">
     </item>
 
 

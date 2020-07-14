@@ -13,4 +13,6 @@
     <string name="nessun_elemento_salvato">No saved elements</string>
     <string name="trama">Overview:</string>
     <string name="missing_description">Missing overview</string>
+    <string name="found_nothing">No movie found</string>
+    <string name="movie_not_found">Movie not found</string>
 </resources>

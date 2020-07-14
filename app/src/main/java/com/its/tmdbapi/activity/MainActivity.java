@@ -1,5 +1,6 @@
 package com.its.tmdbapi.activity;
 
+import android.app.SearchManager;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +17,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -23,8 +25,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -61,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements IWebServer {
     Cursor cursor;
     String language;
     ImageView favouriteBookmark;
+    SearchView searchView;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -167,9 +172,103 @@ public class MainActivity extends AppCompatActivity implements IWebServer {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(final Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
+
+        final MenuItem search = menu.findItem(R.id.action_search);
+        searchView = (SearchView) search.getActionView();
+
+
+        ImageView closeButton = searchView.findViewById(R.id.search_close_btn);
+
+            closeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    adapter.setData(fullList);
+
+                    EditText et= findViewById(R.id.search_src_text);
+
+                    et.setText("");
+
+                    searchView.setQuery("", false);
+
+                    searchView.onActionViewCollapsed();
+
+                    search.collapseActionView();
+                }
+            });
+
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+
+                    String[] wildCardReplacements = {"%" + query + "%"};
+
+                    Cursor cursor = getContentResolver().query(MovieContentProvider.MOVIES_URI, null,
+                            MovieTableHelper.TITLE + " LIKE ?", wildCardReplacements, null);
+
+
+                    if (cursor.getCount() == 0) {
+                        Toast.makeText(MainActivity.this,R.string.movie_not_found, Toast.LENGTH_SHORT).show();
+
+
+
+                    } else {
+
+
+                        List<Movie> movies = new ArrayList<>();
+
+                        cursor.move(-1);
+                        while (cursor.moveToNext()) {
+
+                            movies.add(new Movie(cursor));
+                        }
+
+                        adapter.setData(movies);
+                        recyclerView.setAdapter(adapter);
+
+                    }
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String query) {
+/*
+                    List<Movie> searchedMovies = new ArrayList<>();
+
+                    String likeString = "= %" + query + "%";
+
+                    Cursor cursor = getContentResolver().query(MovieContentProvider.MOVIES_URI,
+                            null, MovieTableHelper.TITLE + " =?", new String[]{likeString}, null);
+
+
+                    if(cursor.getCount() == 0){
+
+                        Toast.makeText(MainActivity.this, R.string.found_nothing, Toast.LENGTH_SHORT).show();
+
+
+                    } else {
+
+                        cursor.moveToFirst();
+
+                        while (cursor.moveToNext()){
+
+                            searchedMovies.add(new Movie(cursor));
+                        }
+                    }
+
+
+                    adapter.setData(searchedMovies);*/
+                    return true;
+
+                }
+
+            });
+
         return true;
+
     }
 
     @Override

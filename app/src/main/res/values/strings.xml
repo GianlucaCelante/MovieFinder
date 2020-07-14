@@ -12,4 +12,6 @@
     <string name="nessun_elemento_salvato">Nessun elemento salvato</string>
     <string name="trama">Trama:</string>
     <string name="missing_description">Descrizione mancante</string>
+    <string name="found_nothing">Nessun film trovato</string>
+    <string name="movie_not_found">Film non trovato</string>
 </resources>
