@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:orientation="horizontal">
+
+       <androidx.cardview.widget.CardView
+           android:layout_width="0dp"
+           android:layout_height="0dp"
+           app:cardCornerRadius="10dp"
+           app:cardPreventCornerOverlap="true"
+           app:cardElevation="5dp"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toTopOf="parent"
+           tools:targetApi="lollipop">
+
+
+
+
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+
+
+               <ImageView
+                   android:id="@+id/imageMovie"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:layout_alignParentStart="true"
+                   android:layout_alignParentTop="true"
+                   android:layout_alignParentEnd="true"
+                   android:layout_alignParentBottom="true"
+                   android:scaleType="fitXY">
+
+               </ImageView>
+
+               <ImageView
+                   android:id="@+id/placeholderMovie"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:src="@drawable/ic_noun_pop_corn_2663344"
+                   android:visibility="gone"
+                   android:layout_alignParentStart="true"
+                   android:layout_alignParentTop="true"
+                   android:layout_alignParentEnd="true"
+                   android:layout_alignParentBottom="true"
+                   android:scaleType="center">
+
+               </ImageView>
+
+               <ImageView
+                   android:id="@+id/bookmarkImageView"
+                   android:layout_width="50dp"
+                   android:layout_height="50dp"
+                   android:alpha="0.5"
+                   android:layout_alignParentStart="true"
+                   android:layout_alignParentTop="true"
+                   android:layout_marginStart="0dp"
+                   android:layout_marginTop="0dp"
+                   android:scaleType="matrix">
+
+               </ImageView>
+
+
+
+           </RelativeLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/dark_gray"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".activity.DetailMovieActivity">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardImageView"
+            android:layout_width="match_parent"
+            android:layout_height="235dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginStart="25dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/backPosterImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="center">
+
+            </ImageView>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:id="@+id/descriptionTitleMovieTextView"
+            style="@style/infoStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/trama"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ratingValueRatingBar">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/descriptionMovieTextView"
+            style="@style/textStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="descrizione"
+            android:paddingBottom="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionTitleMovieTextView">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/titleMovieTextView"
+            style="@style/titleStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="titolo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardImageView">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/originalTitleMovieTextView"
+            style="@style/subtitleStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="sottotitolo"
+            app:layout_goneMarginEnd="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleMovieTextView">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/ratingTextView"
+            style="@style/infoStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/valutazione"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dataDiUscitaValueTextView">
+
+        </TextView>
+
+        <RatingBar
+            android:id="@+id/ratingValueRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="5dp"
+            android:isIndicator="true"
+            android:progressTint="@color/red"
+            android:secondaryProgressTint="#00000000"
+            android:numStars="5"
+            android:rating="5"
+            android:scaleX=".7"
+            android:scaleY=".7"
+            android:stepSize="0.1"
+            android:transformPivotX="0dp"
+            android:transformPivotY="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ratingTextView">
+
+
+        </RatingBar>
+
+        <TextView
+            android:id="@+id/ratingValueTextView"
+            style="@style/textStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="rating"
+            app:layout_constraintEnd_toEndOf="@+id/ratingValueRatingBar"
+            app:layout_constraintStart_toEndOf="@+id/ratingValueRatingBar"
+            app:layout_constraintTop_toTopOf="@+id/ratingValueRatingBar">
+
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/dataDiUscitaValueTextView"
+            style="@style/textStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="valore data uscita"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dataDiUscitaTextView">
+
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/dataDiUscitaTextView"
+            style="@style/infoStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/data_di_uscita"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/originalTitleMovieTextView">
+
+        </TextView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Movie Finder</string>
+    <string name="add_to_favorite_title">Add to favourite?</string>
+    <string name="add_to_favorite_message">Would you like to add this movie to the favourite?</string>
+    <string name="title_main_activity">Movies</string>
+    <string name="first_launch">First launch requires internet connection, please restart the app</string>
+    <string name="remove_from_favorite_title">Remove all movies from favourites?</string>
+    <string name="remove_from_favorite_message">Do you want to remove all movies from the favourites?</string>
+    <string name="fetching_more_movies">Loading...</string>
+    <string name="data_di_uscita">Release date:</string>
+    <string name="valutazione">Rating:</string>
+    <string name="nessun_elemento_salvato">No saved elements</string>
+    <string name="trama">Overview:</string>
+    <string name="missing_description">Missing overview</string>
+</resources>

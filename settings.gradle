@@ -1,0 +1,2 @@
+rootProject.name='TMdbApi'
+include ':app'

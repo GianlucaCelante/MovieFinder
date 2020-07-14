@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Movie Finder</string>
+    <string name="add_to_favorite_title">Aggiungere ai preferiti?</string>
+    <string name="add_to_favorite_message">Vuoi aggiungere questo film ai preferiti?</string>
+    <string name="title_main_activity">Film</string>
+    <string name="first_launch">Il primo avvio necessita internet, per favore riavviare</string>
+    <string name="remove_from_favorite_title">Rimuovere tutti i film dai preferiti?</string>
+    <string name="remove_from_favorite_message">Vuoi davvero rimuovere tutti i film dai preferiti?</string>
+    <string name="fetching_more_movies">Caricamento...</string>
+    <string name="data_di_uscita">Data di uscita:</string>
+    <string name="valutazione">Voto:</string>
+    <string name="nessun_elemento_salvato">Nessun elemento salvato</string>
+    <string name="trama">Trama:</string>
+    <string name="missing_description">Descrizione mancante</string>
+</resources>
