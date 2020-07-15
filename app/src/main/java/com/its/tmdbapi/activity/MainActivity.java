@@ -182,7 +182,16 @@ public class MainActivity extends AppCompatActivity implements IWebServer {
                 @Override
                 public void onClick(View v) {
 
-                    adapter.setData(fullList);
+
+                    if (!isNetworkConnected()){
+
+                        loadFromDb();
+
+                    } else {
+
+                        adapter.setData(fullList);
+
+                    }
 
                     EditText et= findViewById(R.id.search_src_text);
 
