@@ -151,7 +151,6 @@ public class DetailMovieActivity extends AppCompatActivity {
 
         Glide.with(this)
                 .load(IMAGE_BASE_PATH + movie.getBackdropPath())
-                .transition(DrawableTransitionOptions.withCrossFade())
                 .placeholder(R.drawable.ic_noun_pop_corn_2663344)
                 .error(R.drawable.ic_broken_image)
                 .into(backPoster);
