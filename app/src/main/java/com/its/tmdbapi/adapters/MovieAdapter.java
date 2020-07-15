@@ -91,8 +91,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             Glide.with(itemView)
                     .load(IMAGE_BASE_PATH + movie.getPosterPath())
                     .placeholder(R.drawable.ic_noun_pop_corn_2663344).centerCrop()
+                    .transition(DrawableTransitionOptions.withCrossFade(50))
                     .error(R.drawable.ic_broken_image)
-                    .transition(DrawableTransitionOptions.withCrossFade())
                     .into(posterImageView);
 
 
