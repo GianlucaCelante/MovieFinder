@@ -34,7 +34,7 @@
                    android:layout_alignParentTop="true"
                    android:layout_alignParentEnd="true"
                    android:layout_alignParentBottom="true"
-                   android:scaleType="fitXY">
+                   android:scaleType="center">
 
                </ImageView>
 

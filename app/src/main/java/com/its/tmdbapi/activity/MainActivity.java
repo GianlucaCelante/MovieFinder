@@ -1,6 +1,5 @@
 package com.its.tmdbapi.activity;
 
-import android.app.SearchManager;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -10,11 +9,8 @@ import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.Parcelable;
 import android.text.Html;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,7 +26,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -229,7 +224,6 @@ public class MainActivity extends AppCompatActivity implements IWebServer {
                         }
 
                         adapter.setData(movies);
-                        recyclerView.setAdapter(adapter);
 
                     }
                     return false;
@@ -237,21 +231,21 @@ public class MainActivity extends AppCompatActivity implements IWebServer {
 
                 @Override
                 public boolean onQueryTextChange(String query) {
-/*
-                    List<Movie> searchedMovies = new ArrayList<>();
 
-                    String likeString = "= %" + query + "%";
+/*
+
+                    String likeString = " %" + query + "%";
 
                     Cursor cursor = getContentResolver().query(MovieContentProvider.MOVIES_URI,
-                            null, MovieTableHelper.TITLE + " =?", new String[]{likeString}, null);
+                            null, MovieTableHelper.TITLE + " LIKE ?", new String[]{likeString}, null);
 
 
                     if(cursor.getCount() == 0){
 
-                        Toast.makeText(MainActivity.this, R.string.found_nothing, Toast.LENGTH_SHORT).show();
-
 
                     } else {
+                        List<Movie> searchedMovies = new ArrayList<>();
+
 
                         cursor.moveToFirst();
 
@@ -259,10 +253,13 @@ public class MainActivity extends AppCompatActivity implements IWebServer {
 
                             searchedMovies.add(new Movie(cursor));
                         }
+
+                        adapter.setData(searchedMovies);
+
                     }
 
+*/
 
-                    adapter.setData(searchedMovies);*/
                     return true;
 
                 }
@@ -385,21 +382,31 @@ public class MainActivity extends AppCompatActivity implements IWebServer {
             }
         });
 
+
         recyclerView.addOnScrollListener(new OnVerticalScrollListener() {
                  @Override
             public void onScrolledToBottom() {
                 super.onScrolledToBottom();
 
-                Toast.makeText(MainActivity.this, R.string.fetching_more_movies, Toast.LENGTH_SHORT).show();
-                lastPage++;
+                if(!searchView.getQuery().toString().isEmpty()) {
 
-                webService.getPopular(language, lastPage, MainActivity.this);
 
-                adapter.notifyDataSetChanged();
 
-                editor = sharedPreferences.edit();
-                editor.putInt(PAGEKEY, lastPage);
-                editor.apply();
+                } else {
+
+                    Toast.makeText(MainActivity.this, R.string.fetching_more_movies, Toast.LENGTH_SHORT).show();
+                    lastPage++;
+
+                    webService.getPopular(language, lastPage, MainActivity.this);
+
+                    adapter.notifyDataSetChanged();
+
+                    editor = sharedPreferences.edit();
+                    editor.putInt(PAGEKEY, lastPage);
+                    editor.apply();
+
+                }
+
 
             }
         });
