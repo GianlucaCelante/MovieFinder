@@ -44,8 +44,6 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements IWebServer {
 
-    public static final String MyPREFERENCES = "MyPreferences";
-    public static final String PAGEKEY ="pageKey";
     private RecyclerView recyclerView;
     private MovieAdapter adapter;
     private WebService webService;
@@ -63,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements IWebServer {
     String language;
     ImageView favouriteBookmark;
     SearchView searchView;
+    boolean isSearchActive = false;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -93,7 +92,6 @@ public class MainActivity extends AppCompatActivity implements IWebServer {
 
         setupRecyclerView();
 
-        sharedPreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
 
         if (!isNetworkConnected()){
 
@@ -114,7 +112,8 @@ public class MainActivity extends AppCompatActivity implements IWebServer {
 
         } else {
 
-            loadLastFetchedPage();
+            loadFromDb();
+            loadLastFetchedPage(lastPage);
 
         }
     }
@@ -172,6 +171,7 @@ public class MainActivity extends AppCompatActivity implements IWebServer {
     public boolean onCreateOptionsMenu(final Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
 
+
         final MenuItem search = menu.findItem(R.id.action_search);
 
         searchView = (SearchView) search.getActionView();
@@ -181,6 +181,7 @@ public class MainActivity extends AppCompatActivity implements IWebServer {
             closeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
 
 
                     if (!isNetworkConnected()){
@@ -202,6 +203,8 @@ public class MainActivity extends AppCompatActivity implements IWebServer {
                     searchView.onActionViewCollapsed();
 
                     search.collapseActionView();
+
+                    isSearchActive = false;
                 }
             });
 
@@ -235,6 +238,9 @@ public class MainActivity extends AppCompatActivity implements IWebServer {
                         adapter.setData(movies);
 
                     }
+
+                    isSearchActive = true;
+
                     return false;
                 }
 
@@ -397,7 +403,7 @@ public class MainActivity extends AppCompatActivity implements IWebServer {
             public void onScrolledToBottom() {
                 super.onScrolledToBottom();
 
-                if(!searchView.getQuery().toString().isEmpty()) {
+                if(isSearchActive) {
 
 
 
@@ -406,13 +412,9 @@ public class MainActivity extends AppCompatActivity implements IWebServer {
                     Toast.makeText(MainActivity.this, R.string.fetching_more_movies, Toast.LENGTH_SHORT).show();
                     lastPage++;
 
-                    webService.getPopular(language, lastPage, MainActivity.this);
+                    loadLastFetchedPage(lastPage);
 
                     adapter.notifyDataSetChanged();
-
-                    editor = sharedPreferences.edit();
-                    editor.putInt(PAGEKEY, lastPage);
-                    editor.apply();
 
                 }
 
@@ -425,7 +427,6 @@ public class MainActivity extends AppCompatActivity implements IWebServer {
             public void onMovieSelected(Movie movie) {
                 Intent intent = new Intent(MainActivity.this, DetailMovieActivity.class);
                 intent.putExtra(MovieTableHelper.ID_MOVIE, movie.getId());
-                intent.putExtra(MovieTableHelper.GENRE_IDS, movie.getGenreIds());
                 startActivity(intent);
             }
 
@@ -439,9 +440,7 @@ public class MainActivity extends AppCompatActivity implements IWebServer {
     }
 
 
-    private void loadLastFetchedPage(){
-
-        lastPage = sharedPreferences.getInt(PAGEKEY, 1);
+    private void loadLastFetchedPage(int lastPage){
 
         if (lastPage == 1){
 
@@ -456,19 +455,16 @@ public class MainActivity extends AppCompatActivity implements IWebServer {
 
     private void loadFromDb(){
 
-
-        List<Movie> movies = new ArrayList<>();
-
         Cursor cursor = getContentResolver().query(MovieContentProvider.MOVIES_URI, null, null, null, null);
         cursor.move(-1);
 
         while (cursor.moveToNext())
 
-            movies.add(new Movie(cursor));
+            fullList.add(new Movie(cursor));
 
         progressBar.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
-        adapter.setData(movies);
+        adapter.setData(fullList);
 
     }
 
