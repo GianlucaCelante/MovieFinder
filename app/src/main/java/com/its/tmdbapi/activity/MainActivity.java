@@ -373,27 +373,7 @@ public class MainActivity extends AppCompatActivity implements IWebServer {
             @Override
             public void onChildViewDetachedFromWindow(@NonNull View view) {
 
-                Cursor cursor = getContentResolver().query(MovieContentProvider.MOVIES_URI, null,
-                        null, null, null);
 
-
-                if (cursor.getCount() == 0) {
-
-                    Log.d("ciao", "setFavouriteBookmark: ");
-
-                } else {
-
-                    cursor.moveToFirst();
-
-                    while (cursor.moveToNext()) {
-
-                        boolean valueWatchLater = cursor.getInt(cursor.getColumnIndexOrThrow(MovieTableHelper.WATCH_LATER)) > 0;
-                        editor = sharedPreferences.edit();
-                        editor.putBoolean(MovieTableHelper.WATCH_LATER, valueWatchLater);
-                        editor.apply();
-                    }
-
-                }
             }
         });
 
