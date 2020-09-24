@@ -35,4 +35,4 @@
 <br>
 <br>
 
-<a href="/githubAssets/PresentazioneProjectWork">Per vedere in dettaglio i vari componenti usati, allego la presentazione del progetto</a>
+<a href="/githubAssets/PresentazioneProjectWork.pdf">Per vedere in dettaglio i vari componenti usati, allego la presentazione del progetto</a>
