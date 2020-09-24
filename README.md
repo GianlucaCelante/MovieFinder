@@ -1,3 +1,3 @@
 # MovieFinder
 
-<img src="/docs/logo.png" alt="Main Activity"/>
+<img src="/MainActivity.png" alt="Main Activity"/>
