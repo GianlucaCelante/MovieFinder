@@ -1,4 +1,3 @@
 # MovieFinder
-Simple application showing a bunch of movies.
 
-
+<img src="/docs/logo.png" alt="Main Activity"/>
