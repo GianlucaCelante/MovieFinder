@@ -32,3 +32,9 @@
 
 
 <p>Movie Finder è stata sviluppata con Android Studio in Java</p>
+
+<br>
+<br>
+<br>
+
+<a href="/githubAssets">Per vedere in dettaglio i vari componenti usati, allego la presentazione del progetto</a>
