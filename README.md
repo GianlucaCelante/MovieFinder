@@ -28,12 +28,10 @@
 
 <br>
 <br>
-<br>
 
 
 <p>Movie Finder è stata sviluppata con Android Studio in Java</p>
 
-<br>
 <br>
 <br>
 
