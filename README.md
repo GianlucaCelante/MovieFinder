@@ -1,6 +1,6 @@
  <h1>MovieFinder</h1>
 
-<img src="/MainActivity.png" alt="Main Activity" width="450" height="900"/>
+<img src="/MainActivity.png" alt="Main Activity" width="420" height="900"/>
 
 <ul>
      
@@ -35,4 +35,4 @@
 <br>
 <br>
 
-<a href="/githubAssets/githubAssets">Per vedere in dettaglio i vari componenti usati, allego la presentazione del progetto</a>
+<a href="/githubAssets/PresentazioneProjectWork">Per vedere in dettaglio i vari componenti usati, allego la presentazione del progetto</a>
